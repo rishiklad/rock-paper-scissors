@@ -16,19 +16,28 @@ function getComputerChoice() {
     return choices[randomNumber]; 
 }
 
+function convertToWord(letter) {
+    if (letter === 'r') return "Rock"; 
+    if (letter === 'p') return "Paper"; 
+    return "Scissors"; 
+}
+
 function win(userChoice, computerChoice) {
     userScore++; 
     userScore_span.innerHTML = userScore; 
     computerScore_span.innerHTML = computerScore; 
-    result_p.innerHTML = userChoice + " beats " + computerChoice + ". You win 🥳"; 
+    result_p.innerHTML = `You chose ${convertToWord(userChoice)}. The computer chose ${convertToWord(computerChoice)} (comp). You win 🥳`;
 }
 
-function lose() {
-    console.log("LOSE");
+function lose(userChoice, computerChoice) {
+    computerScore++;
+    userScore_span.innerHTML = userScore;
+    computerScore_span.innerHTML = computerScore;
+    result_p.innerHTML = `You chose ${convertToWord(userChoice)}. The computer chose ${convertToWord(computerChoice)} (comp). You lost 😭`;
 }
        
-function draw() {
-    console.log("DRAW");
+function draw(userChoice, computerChoice) {
+    result_p.innerHTML = `You chose ${convertToWord(userChoice)}. The computer chose ${convertToWord(computerChoice)} (comp). It's a draw 🏳️`;
 }
 
 function game(userChoice) {
